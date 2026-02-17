@@ -1,4 +1,8 @@
-# WAB_FProg
-LaTeX WAB Fortgeschrittene Programmierung
+# Simple LaTeX Template
 
-LaTeX Vorlage von Prof. Dr. Jörg Daubert https://github.com/kannX/phs-latex-templates
+This template provides two entry points:
+
+- main.tex for the full paper
+- exposee.tex for the exposee
+
+Chapters live in the Chapters/ directory and are included from main.tex.

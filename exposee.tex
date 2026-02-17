@@ -1,0 +1,98 @@
+\input{info}
+
+\documentclass[12pt,a4paper,twoside,open=any]{scrreprt}
+
+\input{settings}
+\input{glossary}
+\input{abbreviations}
+
+\begin{document}
+\selectlanguage{english}
+
+% Front matter in Roman numerals
+\pagenumbering{Roman}
+
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{flushright}
+\includegraphics[height=2.5cm]{Images/Cover/provadis-hochschule.pdf}
+\end{flushright}
+\vspace{1cm}
+\centering
+{\Large \textbf{WAB} \par}
+\vspace{0.5cm}
+{\Large \UniversityName \par}
+\vspace{1cm}
+{\LARGE \textbf{Expos\'e} \par}
+\vspace{0.5cm}
+{\Large \textbf{\ThesisTitle} \par}
+\vspace{0.5cm}
+{\Large \ThesisSubtitle \par}
+\vspace{2cm}
+{\large \AuthorName \par}
+{\large \AuthorEmail \par}
+\vspace{1.5cm}
+{\large Department: \DepartmentName \par}
+{\large Module: \ModuleName \par}
+{\large Reviewer: \ReviewerName \par}
+\vfill
+{\large \SubmissionDate \par}
+\end{titlepage}
+
+\tableofcontents
+
+% Glossary and abbreviations in front matter
+\printglossary[title=Glossary]
+% \printglossary[type=\acronymtype,title=Abbreviations,nonumberlist]
+
+% Exposee content in Arabic numerals
+\clearpage
+\chapter*{Expos\'e}
+\addcontentsline{toc}{chapter}{Expos\'e}
+\pagenumbering{arabic}
+
+\section*{Problem Statement}
+\addcontentsline{toc}{section}{Problem Statement}
+The accurate prediction of \gls{logp} is crucial in various fields, including drug discovery and environmental chemistry. 
+\section*{Objectives}
+\addcontentsline{toc}{section}{Objectives}
+The primary objectives of this project are:
+\begin{itemize}
+    \item To find a curated dataset of molecules and find whether a fingerprint-based logp estimation is feasible
+    \item To evaluate the performance of the implemented models in terms of accuracy and efficiency.
+\end{itemize}
+
+\section*{Methodology}
+\addcontentsline{toc}{section}{Methodology}
+The project will follow these steps:
+\begin{enumerate}
+    \item Data Collection: Gather a dataset of chemical compounds with known \gls{logp} values. The \gls{ZINC20} database will be used as a primary source for this data.
+    \item Fingerprint Generation: The molecules will be converted to fingerprints using multiple algorithms, like Morgan (ECFP4) and MACCS Fingerprints.
+    \item Model Development: Train multiple machine learning models like \gls{rf}, \gls{svm} and \gls{nn}
+\end{enumerate}
+
+\section*{Planned Structure}
+\addcontentsline{toc}{section}{Planned Structure}
+The paper will likely be structured as follows:
+\begin{itemize}
+    \item Introduction
+    \item Research Question and Objectives
+    \item Literature Review
+    \item Methodology
+    \item Results and Discussion
+    \item Limitations
+    \item Conclusion and Future Work
+    \item References
+    \item AI Declaration
+    \item Declaration of Authorship
+\end{itemize}
+
+\clearpage
+
+% Back matter in roman numerals
+\pagenumbering{roman}
+
+\nocite{*}
+\printbibliography
+
+\end{document}
