@@ -1,10 +1,13 @@
 #import "info.typ": wab_info
-#import "template.typ": paper, title_page, unnumbered_section, numbered_section, glossary_table, abbreviation_table, ai_declaration_table, declaration_text
-#import "Chapters/Glossary.typ": glossary_entries, abbreviation_entries
+#import "template.typ": ai_declaration_table, declaration_text, numbered_section, paper, theme-compact-no-title, title_page, unnumbered_section
+#import "@preview/glossy:0.9.0": glossary, init-glossary
+#import "Chapters/Glossary.typ": all_glossary_entries
 #import "Chapters/Abstract.typ": abstract_content
 #import "Chapters/01_Introduction.typ": introduction_content
 #import "Chapters/02_Methods.typ": methods_content
-#import "Chapters/AI_Declaration.typ": ai_declaration_intro, ai_declaration_entries
+#import "Chapters/AI_Declaration.typ": ai_declaration_entries, ai_declaration_intro
+
+#show: init-glossary.with(all_glossary_entries)
 
 #show: paper
 
@@ -16,12 +19,20 @@
 #unnumbered_section([Abstract], abstract_content)
 
 #numbered_section([
-	#outline(title: [Contents])
+  #outline(title: [Contents])
 ])
 
-#unnumbered_section([Glossary], glossary_table(glossary_entries))
+#unnumbered_section([Glossary], glossary(
+  theme: theme-compact-no-title,
+  groups: ("Glossary",),
+  show-all: true,
+))
 
-#unnumbered_section([Abbreviations], abbreviation_table(abbreviation_entries))
+#unnumbered_section([Abbreviations], glossary(
+  theme: theme-compact-no-title,
+  groups: ("Abbreviations",),
+  show-all: true,
+))
 
 #set page(numbering: "1")
 #counter(page).update(1)
@@ -35,14 +46,13 @@
 #counter(page).update(1)
 
 #numbered_section([
-	#bibliography("references.bib", title: [References], full: true)
+  #bibliography("references.bib", title: [References], full: true)
 ])
 
 #unnumbered_section([AI Declaration], [
-	#ai_declaration_intro
-
-	#v(0.8cm)
-	#ai_declaration_table(ai_declaration_entries)
+  #ai_declaration_intro
+  #v(0.8cm)
+  #ai_declaration_table(ai_declaration_entries)
 ])
 
 #unnumbered_section([Declaration of Authorship], declaration_text(wab_info))

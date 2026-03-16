@@ -1,7 +1,10 @@
 #import "info.typ": exposee_info
-#import "template.typ": abbreviation_table, glossary_table, numbered_section, paper, title_page, unnumbered_section
-#import "Chapters/Glossary.typ": abbreviation_entries, glossary_entries
+#import "template.typ": numbered_section, paper, theme-compact-no-title, title_page, unnumbered_section
+#import "@preview/glossy:0.9.0": glossary, init-glossary
+#import "Chapters/Glossary.typ": all_glossary_entries
 #import "Chapters/Exposee.typ": exposee_content
+
+#show: init-glossary.with(all_glossary_entries)
 
 #show: paper
 
@@ -14,9 +17,13 @@
   #outline(title: [Contents])
 ])
 
-#unnumbered_section([Glossary], glossary_table(glossary_entries))
+// #unnumbered_section([Glossary], glossary(theme: theme-compact-no-title, groups: ("Glossary",), show-all: true))
 
-#unnumbered_section([Abbreviations], abbreviation_table(abbreviation_entries))
+// #unnumbered_section([Abbreviations], glossary(
+//   theme: theme-compact-no-title,
+//   groups: ("Abbreviations",),
+//   show-all: true,
+// ))
 
 #set page(numbering: "1")
 #counter(page).update(1)

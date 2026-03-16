@@ -1,6 +1,8 @@
 #let body-font = "Times New Roman"
 #let display-font = "Calibri"
 
+#import "@preview/glossy:0.9.0": theme-compact
+
 #let paper(body) = {
   set page(
     paper: "a4",
@@ -32,6 +34,12 @@
 ])
 
 #let numbered_section(body) = major_section(body)
+
+#let theme-compact-no-title = (
+  section: (title, body) => body,
+  group: theme-compact.group,
+  entry: theme-compact.entry,
+)
 
 #let title_page(info) = [
   #set text(font: body-font)
@@ -69,21 +77,6 @@
   #pagebreak()
 ]
 
-#let glossary_table(entries) = table(
-  columns: (1.1fr, 3fr),
-  inset: 8pt,
-  align: (left, left),
-  table.header([#text(font: display-font)[*Term*]], [#text(font: display-font)[*Description*]]),
-  ..entries.map(entry => ([#entry.term], [#entry.description])).flatten(),
-)
-
-#let abbreviation_table(entries) = table(
-  columns: (1fr, 3fr),
-  inset: 8pt,
-  align: (left, left),
-  table.header([#text(font: display-font)[*Abbreviation*]], [#text(font: display-font)[*Meaning*]]),
-  ..entries.map(entry => ([#entry.short], [#entry.long])).flatten(),
-)
 
 #let ai_declaration_table(entries) = table(
   columns: (1.1fr, 2.4fr, 2fr),
