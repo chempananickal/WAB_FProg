@@ -1,0 +1,241 @@
+case_id,scenario,target_size,sequence_a_length,sequence_b_length,algorithm,median_time_ms,score,runs,warmup
+homologous_0_n100,homologous_region,100,100,100,CPython,1.636,185,10,2
+homologous_1_n100,homologous_region,100,100,100,CPython,1.6802,185,10,2
+indel_0_n100,indel_disruption,100,100,112,CPython,1.84555,176,10,2
+indel_1_n100,indel_disruption,100,100,88,CPython,1.4593,149,10,2
+motif_0_n100,conserved_motif,100,100,100,CPython,1.65195,62,10,2
+motif_1_n100,conserved_motif,100,100,100,CPython,1.6924,65,10,2
+contained_0_n100,contained_fragment,100,50,108,CPython,0.8898,100,10,2
+contained_1_n100,contained_fragment,100,50,108,CPython,0.88945,100,10,2
+random_0_n100,random_uniform,100,100,100,CPython,1.6682,44,10,2
+random_1_n100,random_uniform,100,100,100,CPython,1.66815,45,10,2
+homologous_0_n200,homologous_region,200,200,200,CPython,7.0889,370,10,2
+homologous_1_n200,homologous_region,200,200,200,CPython,6.9815,373,10,2
+indel_0_n200,indel_disruption,200,200,225,CPython,7.40415,350,10,2
+indel_1_n200,indel_disruption,200,200,175,CPython,5.90525,297,10,2
+motif_0_n200,conserved_motif,200,200,200,CPython,6.62095,130,10,2
+motif_1_n200,conserved_motif,200,200,200,CPython,6.8679,119,10,2
+contained_0_n200,contained_fragment,200,100,216,CPython,3.51995,200,10,2
+contained_1_n200,contained_fragment,200,100,216,CPython,3.51995,200,10,2
+random_0_n200,random_uniform,200,200,200,CPython,6.5895,84,10,2
+random_1_n200,random_uniform,200,200,200,CPython,6.8013,86,10,2
+homologous_0_n400,homologous_region,400,400,400,CPython,31.5119,740,10,2
+homologous_1_n400,homologous_region,400,400,400,CPython,30.9702,740,10,2
+indel_0_n400,indel_disruption,400,400,450,CPython,34.97725,700,10,2
+indel_1_n400,indel_disruption,400,400,350,CPython,26.00095,597,10,2
+motif_0_n400,conserved_motif,400,400,400,CPython,30.5803,167,10,2
+motif_1_n400,conserved_motif,400,400,400,CPython,30.87395,246,10,2
+contained_0_n400,contained_fragment,400,200,433,CPython,16.3835,400,10,2
+contained_1_n400,contained_fragment,400,200,433,CPython,16.43025,400,10,2
+random_0_n400,random_uniform,400,400,400,CPython,31.09715,178,10,2
+random_1_n400,random_uniform,400,400,400,CPython,30.1516,172,10,2
+homologous_0_n600,homologous_region,600,600,600,CPython,73.1725,1116,10,2
+homologous_1_n600,homologous_region,600,600,600,CPython,77.0137,1110,10,2
+indel_0_n600,indel_disruption,600,600,675,CPython,84.3625,1050,10,2
+indel_1_n600,indel_disruption,600,600,525,CPython,65.99785,897,10,2
+motif_0_n600,conserved_motif,600,600,600,CPython,71.92745,344,10,2
+motif_1_n600,conserved_motif,600,600,600,CPython,69.74955,264,10,2
+contained_0_n600,contained_fragment,600,300,650,CPython,41.2768,600,10,2
+contained_1_n600,contained_fragment,600,300,650,CPython,38.6545,600,10,2
+random_0_n600,random_uniform,600,600,600,CPython,70.656,266,10,2
+random_1_n600,random_uniform,600,600,600,CPython,72.2958,266,10,2
+homologous_0_n800,homologous_region,800,800,800,CPython,136.5251,1484,10,2
+homologous_1_n800,homologous_region,800,800,800,CPython,141.35505,1486,10,2
+indel_0_n800,indel_disruption,800,800,900,CPython,163.682,1400,10,2
+indel_1_n800,indel_disruption,800,800,700,CPython,120.8066,1197,10,2
+motif_0_n800,conserved_motif,800,800,800,CPython,135.1251,376,10,2
+motif_1_n800,conserved_motif,800,800,800,CPython,138.9516,365,10,2
+contained_0_n800,contained_fragment,800,400,866,CPython,77.8162,800,10,2
+contained_1_n800,contained_fragment,800,400,866,CPython,78.51795,800,10,2
+random_0_n800,random_uniform,800,800,800,CPython,138.3689,343,10,2
+random_1_n800,random_uniform,800,800,800,CPython,134.6555,343,10,2
+homologous_0_n1000,homologous_region,1000,1000,1000,CPython,226.5521,1865,10,2
+homologous_1_n1000,homologous_region,1000,1000,1000,CPython,228.35585,1853,10,2
+indel_0_n1000,indel_disruption,1000,1000,1125,CPython,273.5553,1750,10,2
+indel_1_n1000,indel_disruption,1000,1000,875,CPython,205.11575,1497,10,2
+motif_0_n1000,conserved_motif,1000,1000,1000,CPython,258.02345,592,10,2
+motif_1_n1000,conserved_motif,1000,1000,1000,CPython,251.68785,466,10,2
+contained_0_n1000,contained_fragment,1000,500,1083,CPython,163.85085,1000,10,2
+contained_1_n1000,contained_fragment,1000,500,1083,CPython,180.48655,1000,10,2
+random_0_n1000,random_uniform,1000,1000,1000,CPython,248.9011,444,10,2
+random_1_n1000,random_uniform,1000,1000,1000,CPython,246.36515,428,10,2
+homologous_0_n100,homologous_region,100,100,100,CPython JIT,1.58,185,10,2
+homologous_1_n100,homologous_region,100,100,100,CPython JIT,1.59355,185,10,2
+indel_0_n100,indel_disruption,100,100,112,CPython JIT,1.70545,176,10,2
+indel_1_n100,indel_disruption,100,100,88,CPython JIT,1.33665,149,10,2
+motif_0_n100,conserved_motif,100,100,100,CPython JIT,1.4956,62,10,2
+motif_1_n100,conserved_motif,100,100,100,CPython JIT,1.52165,65,10,2
+contained_0_n100,contained_fragment,100,50,108,CPython JIT,0.81495,100,10,2
+contained_1_n100,contained_fragment,100,50,108,CPython JIT,0.7974,100,10,2
+random_0_n100,random_uniform,100,100,100,CPython JIT,1.5189,44,10,2
+random_1_n100,random_uniform,100,100,100,CPython JIT,1.58265,45,10,2
+homologous_0_n200,homologous_region,200,200,200,CPython JIT,6.2168,370,10,2
+homologous_1_n200,homologous_region,200,200,200,CPython JIT,6.2841,373,10,2
+indel_0_n200,indel_disruption,200,200,225,CPython JIT,7.02435,350,10,2
+indel_1_n200,indel_disruption,200,200,175,CPython JIT,5.21035,297,10,2
+motif_0_n200,conserved_motif,200,200,200,CPython JIT,6.20585,130,10,2
+motif_1_n200,conserved_motif,200,200,200,CPython JIT,6.4358,119,10,2
+contained_0_n200,contained_fragment,200,100,216,CPython JIT,3.2346,200,10,2
+contained_1_n200,contained_fragment,200,100,216,CPython JIT,3.2453,200,10,2
+random_0_n200,random_uniform,200,200,200,CPython JIT,5.88875,84,10,2
+random_1_n200,random_uniform,200,200,200,CPython JIT,5.9175,86,10,2
+homologous_0_n400,homologous_region,400,400,400,CPython JIT,26.2214,740,10,2
+homologous_1_n400,homologous_region,400,400,400,CPython JIT,25.5537,740,10,2
+indel_0_n400,indel_disruption,400,400,450,CPython JIT,29.13695,700,10,2
+indel_1_n400,indel_disruption,400,400,350,CPython JIT,20.8856,597,10,2
+motif_0_n400,conserved_motif,400,400,400,CPython JIT,23.4673,167,10,2
+motif_1_n400,conserved_motif,400,400,400,CPython JIT,23.1151,246,10,2
+contained_0_n400,contained_fragment,400,200,433,CPython JIT,12.7803,400,10,2
+contained_1_n400,contained_fragment,400,200,433,CPython JIT,12.60855,400,10,2
+random_0_n400,random_uniform,400,400,400,CPython JIT,42.90855,178,10,2
+random_1_n400,random_uniform,400,400,400,CPython JIT,35.9593,172,10,2
+homologous_0_n600,homologous_region,600,600,600,CPython JIT,62.6729,1116,10,2
+homologous_1_n600,homologous_region,600,600,600,CPython JIT,56.41035,1110,10,2
+indel_0_n600,indel_disruption,600,600,675,CPython JIT,64.95085,1050,10,2
+indel_1_n600,indel_disruption,600,600,525,CPython JIT,55.29005,897,10,2
+motif_0_n600,conserved_motif,600,600,600,CPython JIT,65.92935,344,10,2
+motif_1_n600,conserved_motif,600,600,600,CPython JIT,62.0732,264,10,2
+contained_0_n600,contained_fragment,600,300,650,CPython JIT,33.4174,600,10,2
+contained_1_n600,contained_fragment,600,300,650,CPython JIT,32.6364,600,10,2
+random_0_n600,random_uniform,600,600,600,CPython JIT,69.425,266,10,2
+random_1_n600,random_uniform,600,600,600,CPython JIT,56.3234,266,10,2
+homologous_0_n800,homologous_region,800,800,800,CPython JIT,101.1794,1484,10,2
+homologous_1_n800,homologous_region,800,800,800,CPython JIT,112.4953,1486,10,2
+indel_0_n800,indel_disruption,800,800,900,CPython JIT,138.3573,1400,10,2
+indel_1_n800,indel_disruption,800,800,700,CPython JIT,94.30395,1197,10,2
+motif_0_n800,conserved_motif,800,800,800,CPython JIT,110.10395,376,10,2
+motif_1_n800,conserved_motif,800,800,800,CPython JIT,160.3875,365,10,2
+contained_0_n800,contained_fragment,800,400,866,CPython JIT,72.25765,800,10,2
+contained_1_n800,contained_fragment,800,400,866,CPython JIT,61.44645,800,10,2
+random_0_n800,random_uniform,800,800,800,CPython JIT,106.8035,343,10,2
+random_1_n800,random_uniform,800,800,800,CPython JIT,99.15155,343,10,2
+homologous_0_n1000,homologous_region,1000,1000,1000,CPython JIT,169.16935,1865,10,2
+homologous_1_n1000,homologous_region,1000,1000,1000,CPython JIT,159.29525,1853,10,2
+indel_0_n1000,indel_disruption,1000,1000,1125,CPython JIT,183.30185,1750,10,2
+indel_1_n1000,indel_disruption,1000,1000,875,CPython JIT,143.7767,1497,10,2
+motif_0_n1000,conserved_motif,1000,1000,1000,CPython JIT,154.4328,592,10,2
+motif_1_n1000,conserved_motif,1000,1000,1000,CPython JIT,159.61135,466,10,2
+contained_0_n1000,contained_fragment,1000,500,1083,CPython JIT,83.49375,1000,10,2
+contained_1_n1000,contained_fragment,1000,500,1083,CPython JIT,82.23835,1000,10,2
+random_0_n1000,random_uniform,1000,1000,1000,CPython JIT,155.26385,444,10,2
+random_1_n1000,random_uniform,1000,1000,1000,CPython JIT,150.3416,428,10,2
+homologous_0_n100,homologous_region,100,100,100,PyPy,0.6661,185,10,2
+homologous_1_n100,homologous_region,100,100,100,PyPy,0.23305,185,10,2
+indel_0_n100,indel_disruption,100,100,112,PyPy,0.2597,176,10,2
+indel_1_n100,indel_disruption,100,100,88,PyPy,0.2156,149,10,2
+motif_0_n100,conserved_motif,100,100,100,PyPy,0.2245,62,10,2
+motif_1_n100,conserved_motif,100,100,100,PyPy,0.23895,65,10,2
+contained_0_n100,contained_fragment,100,50,108,PyPy,0.14435,100,10,2
+contained_1_n100,contained_fragment,100,50,108,PyPy,0.1194,100,10,2
+random_0_n100,random_uniform,100,100,100,PyPy,0.185,44,10,2
+random_1_n100,random_uniform,100,100,100,PyPy,0.18895,45,10,2
+homologous_0_n200,homologous_region,200,200,200,PyPy,0.8402,370,10,2
+homologous_1_n200,homologous_region,200,200,200,PyPy,0.808,373,10,2
+indel_0_n200,indel_disruption,200,200,225,PyPy,1.19685,350,10,2
+indel_1_n200,indel_disruption,200,200,175,PyPy,0.7271,297,10,2
+motif_0_n200,conserved_motif,200,200,200,PyPy,0.77465,130,10,2
+motif_1_n200,conserved_motif,200,200,200,PyPy,0.7917,119,10,2
+contained_0_n200,contained_fragment,200,100,216,PyPy,0.45055,200,10,2
+contained_1_n200,contained_fragment,200,100,216,PyPy,0.46265,200,10,2
+random_0_n200,random_uniform,200,200,200,PyPy,0.7774,84,10,2
+random_1_n200,random_uniform,200,200,200,PyPy,0.8022,86,10,2
+homologous_0_n400,homologous_region,400,400,400,PyPy,3.5302,740,10,2
+homologous_1_n400,homologous_region,400,400,400,PyPy,3.61795,740,10,2
+indel_0_n400,indel_disruption,400,400,450,PyPy,4.1147,700,10,2
+indel_1_n400,indel_disruption,400,400,350,PyPy,3.3519,597,10,2
+motif_0_n400,conserved_motif,400,400,400,PyPy,3.22245,167,10,2
+motif_1_n400,conserved_motif,400,400,400,PyPy,3.3696,246,10,2
+contained_0_n400,contained_fragment,400,200,433,PyPy,1.8839,400,10,2
+contained_1_n400,contained_fragment,400,200,433,PyPy,1.8959,400,10,2
+random_0_n400,random_uniform,400,400,400,PyPy,3.5007,178,10,2
+random_1_n400,random_uniform,400,400,400,PyPy,3.30365,172,10,2
+homologous_0_n600,homologous_region,600,600,600,PyPy,9.4041,1116,10,2
+homologous_1_n600,homologous_region,600,600,600,PyPy,8.78585,1110,10,2
+indel_0_n600,indel_disruption,600,600,675,PyPy,9.1551,1050,10,2
+indel_1_n600,indel_disruption,600,600,525,PyPy,6.74915,897,10,2
+motif_0_n600,conserved_motif,600,600,600,PyPy,7.092,344,10,2
+motif_1_n600,conserved_motif,600,600,600,PyPy,9.075,264,10,2
+contained_0_n600,contained_fragment,600,300,650,PyPy,5.9054,600,10,2
+contained_1_n600,contained_fragment,600,300,650,PyPy,5.22325,600,10,2
+random_0_n600,random_uniform,600,600,600,PyPy,7.9425,266,10,2
+random_1_n600,random_uniform,600,600,600,PyPy,7.8248,266,10,2
+homologous_0_n800,homologous_region,800,800,800,PyPy,23.59525,1484,10,2
+homologous_1_n800,homologous_region,800,800,800,PyPy,15.61325,1486,10,2
+indel_0_n800,indel_disruption,800,800,900,PyPy,15.72145,1400,10,2
+indel_1_n800,indel_disruption,800,800,700,PyPy,11.5328,1197,10,2
+motif_0_n800,conserved_motif,800,800,800,PyPy,11.8871,376,10,2
+motif_1_n800,conserved_motif,800,800,800,PyPy,11.5909,365,10,2
+contained_0_n800,contained_fragment,800,400,866,PyPy,6.8408,800,10,2
+contained_1_n800,contained_fragment,800,400,866,PyPy,6.6897,800,10,2
+random_0_n800,random_uniform,800,800,800,PyPy,11.5191,343,10,2
+random_1_n800,random_uniform,800,800,800,PyPy,11.53915,343,10,2
+homologous_0_n1000,homologous_region,1000,1000,1000,PyPy,19.83545,1865,10,2
+homologous_1_n1000,homologous_region,1000,1000,1000,PyPy,19.5607,1853,10,2
+indel_0_n1000,indel_disruption,1000,1000,1125,PyPy,22.1706,1750,10,2
+indel_1_n1000,indel_disruption,1000,1000,875,PyPy,16.71845,1497,10,2
+motif_0_n1000,conserved_motif,1000,1000,1000,PyPy,18.0595,592,10,2
+motif_1_n1000,conserved_motif,1000,1000,1000,PyPy,17.36295,466,10,2
+contained_0_n1000,contained_fragment,1000,500,1083,PyPy,10.66735,1000,10,2
+contained_1_n1000,contained_fragment,1000,500,1083,PyPy,10.54855,1000,10,2
+random_0_n1000,random_uniform,1000,1000,1000,PyPy,17.6519,444,10,2
+random_1_n1000,random_uniform,1000,1000,1000,PyPy,17.3799,428,10,2
+homologous_0_n100,homologous_region,100,100,100,Cython,0.6955,185,10,2
+homologous_1_n100,homologous_region,100,100,100,Cython,0.70925,185,10,2
+indel_0_n100,indel_disruption,100,100,112,Cython,0.79155,176,10,2
+indel_1_n100,indel_disruption,100,100,88,Cython,0.6213,149,10,2
+motif_0_n100,conserved_motif,100,100,100,Cython,0.70935,62,10,2
+motif_1_n100,conserved_motif,100,100,100,Cython,0.72555,65,10,2
+contained_0_n100,contained_fragment,100,50,108,Cython,0.37495,100,10,2
+contained_1_n100,contained_fragment,100,50,108,Cython,0.3781,100,10,2
+random_0_n100,random_uniform,100,100,100,Cython,0.75925,44,10,2
+random_1_n100,random_uniform,100,100,100,Cython,0.69525,45,10,2
+homologous_0_n200,homologous_region,200,200,200,Cython,2.8039,370,10,2
+homologous_1_n200,homologous_region,200,200,200,Cython,2.70705,373,10,2
+indel_0_n200,indel_disruption,200,200,225,Cython,3.1963,350,10,2
+indel_1_n200,indel_disruption,200,200,175,Cython,2.4676,297,10,2
+motif_0_n200,conserved_motif,200,200,200,Cython,2.6549,130,10,2
+motif_1_n200,conserved_motif,200,200,200,Cython,2.6227,119,10,2
+contained_0_n200,contained_fragment,200,100,216,Cython,1.48195,200,10,2
+contained_1_n200,contained_fragment,200,100,216,Cython,1.47825,200,10,2
+random_0_n200,random_uniform,200,200,200,Cython,2.803,84,10,2
+random_1_n200,random_uniform,200,200,200,Cython,2.6341,86,10,2
+homologous_0_n400,homologous_region,400,400,400,Cython,11.83715,740,10,2
+homologous_1_n400,homologous_region,400,400,400,Cython,11.32545,740,10,2
+indel_0_n400,indel_disruption,400,400,450,Cython,12.42235,700,10,2
+indel_1_n400,indel_disruption,400,400,350,Cython,11.02615,597,10,2
+motif_0_n400,conserved_motif,400,400,400,Cython,13.9188,167,10,2
+motif_1_n400,conserved_motif,400,400,400,Cython,11.6187,246,10,2
+contained_0_n400,contained_fragment,400,200,433,Cython,5.95945,400,10,2
+contained_1_n400,contained_fragment,400,200,433,Cython,5.91445,400,10,2
+random_0_n400,random_uniform,400,400,400,Cython,10.29385,178,10,2
+random_1_n400,random_uniform,400,400,400,Cython,9.78985,172,10,2
+homologous_0_n600,homologous_region,600,600,600,Cython,23.9889,1116,10,2
+homologous_1_n600,homologous_region,600,600,600,Cython,23.61955,1110,10,2
+indel_0_n600,indel_disruption,600,600,675,Cython,26.529,1050,10,2
+indel_1_n600,indel_disruption,600,600,525,Cython,19.7398,897,10,2
+motif_0_n600,conserved_motif,600,600,600,Cython,20.9575,344,10,2
+motif_1_n600,conserved_motif,600,600,600,Cython,20.33675,264,10,2
+contained_0_n600,contained_fragment,600,300,650,Cython,11.47285,600,10,2
+contained_1_n600,contained_fragment,600,300,650,Cython,11.82105,600,10,2
+random_0_n600,random_uniform,600,600,600,Cython,17.7923,266,10,2
+random_1_n600,random_uniform,600,600,600,Cython,20.328,266,10,2
+homologous_0_n800,homologous_region,800,800,800,Cython,42.5564,1484,10,2
+homologous_1_n800,homologous_region,800,800,800,Cython,43.84315,1486,10,2
+indel_0_n800,indel_disruption,800,800,900,Cython,47.00625,1400,10,2
+indel_1_n800,indel_disruption,800,800,700,Cython,38.9243,1197,10,2
+motif_0_n800,conserved_motif,800,800,800,Cython,35.4955,376,10,2
+motif_1_n800,conserved_motif,800,800,800,Cython,37.85285,365,10,2
+contained_0_n800,contained_fragment,800,400,866,Cython,21.2006,800,10,2
+contained_1_n800,contained_fragment,800,400,866,Cython,21.39165,800,10,2
+random_0_n800,random_uniform,800,800,800,Cython,37.47755,343,10,2
+random_1_n800,random_uniform,800,800,800,Cython,35.51845,343,10,2
+homologous_0_n1000,homologous_region,1000,1000,1000,Cython,67.2707,1865,10,2
+homologous_1_n1000,homologous_region,1000,1000,1000,Cython,67.9406,1853,10,2
+indel_0_n1000,indel_disruption,1000,1000,1125,Cython,77.0799,1750,10,2
+indel_1_n1000,indel_disruption,1000,1000,875,Cython,56.92075,1497,10,2
+motif_0_n1000,conserved_motif,1000,1000,1000,Cython,63.1335,592,10,2
+motif_1_n1000,conserved_motif,1000,1000,1000,Cython,60.22835,466,10,2
+contained_0_n1000,contained_fragment,1000,500,1083,Cython,31.6353,1000,10,2
+contained_1_n1000,contained_fragment,1000,500,1083,Cython,33.77955,1000,10,2
+random_0_n1000,random_uniform,1000,1000,1000,Cython,58.9174,444,10,2
+random_1_n1000,random_uniform,1000,1000,1000,Cython,59.4815,428,10,2

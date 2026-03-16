@@ -1,136 +1,127 @@
-# Code Folder README (Start Here)
+# Smith-Waterman Benchmark Suite
 
-This folder contains the training code and example C++ files for running a logP model with TensorFlow Lite (TFLite). The steps below assume you are a total beginner and are using Windows.
+This benchmark suite evaluates the performance of a Smith-Waterman local sequence alignment implementation across multiple Python runtimes and execution modes. It is designed to provide insights into the trade-offs between pure Python, JIT compilation, PyPy's optimizations, and Cython's native extensions for a computationally intensive algorithm.
 
-## 1) Install Python
+## Structure
 
-1. Download Python 3.10 or newer from <https://www.python.org/downloads/> .
-2. During installation, check the box "Add Python to PATH".
-3. Open a new PowerShell window and verify:
-   - Run: `python --version`
+- `benchmark_sw.py`: main benchmark entrypoint
+- `helpers/`: benchmarking, case generation, statistics, and a nested `smithwaterman/` package for the algorithm/runtime code
+- `Results/`: generated raw runs, case scores, and summary statistics
+- `Results/plots/`: generated PDF figures for paper inclusion
+- `tests/`: correctness and generator tests
 
-## 2) Create a virtual environment (recommended)
+The suite compares Smith-Waterman local alignment scores across four execution modes:
 
-1. In PowerShell, go to this folder:
-   - `cd ~\WAB_Embedded\Code`
-2. Create a virtual environment:
-   - `python -m venv .venv`
-3. Activate it:
-   - `./.venv/Scripts/Activate.ps1`
+- CPython 3.14
+- CPython 3.14 with JIT
+- PyPy
+- Cython on CPython 3.14
 
-If PowerShell blocks scripts, run once:
+The `helpers.smithwaterman` package exposes a single scoring function. Runtime selection is driven by the `EXECUTOR` environment variable with the values `DEFAULT`, `JIT`, `PYPY`, or `CYTHON`.
 
-- `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+## Windows Prerequisites
 
-## 3) Install Python dependencies
+Before running the benchmark suite on Windows, install the Visual Studio C++ build tools so Cython extensions can compile.
 
-Run:
+1. Download and install [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
+2. In the installer, select the `Desktop development with C++` workload.
+3. Download and install [PyPy](https://www.pypy.org/download.html).
+4. Make sure the PyPy executable is on `PATH` so `pypy` or `pypy3` resolves in a terminal.
+5. Bootstrap `pip` inside PyPy.
 
-- `python -m pip install --upgrade pip`
-- `python -m pip install rdkit-pypi tensorflow pandas numpy scikit-learn`
+   ```powershell
+   pypy -m ensurepip
+   ```
 
-## 4) Train and export the TFLite model
+6. Install `psutil` into the PyPy environment so memory measurements are comparable across runtimes.
 
-Run:
+   ```powershell
+   pypy -m pip install psutil
+   ```
 
-- `python train_logp_tflite.py`
+## Quick Start
 
-Outputs:
+From the workspace root:
 
-- Model folder: `Code/artifacts/logp_model/`
-- TFLite file: `Code/artifacts/logp_model.tflite`
+```powershell
+python -m pip install -r Code/requirements.txt
+python Code/benchmark_sw.py
+```
 
-Notes:
+If `pypy3` is not on your `PATH`, pass the full executable path with `--pypy`.
 
-- To enable full int8 quantization (recommended for ESP32), edit `train_logp_tflite.py` and set `USE_INT8 = True`, then re-run the script.
+## Default Benchmark Shape
 
-## 5) Quick sanity check on your PC (optional)
+The default benchmark profile is intentionally biased toward fewer but larger bioinformatics-style cases rather than many tiny strings.
 
-You can test the TFLite model on your PC before moving to ESP32.
+- default problem sizes: `100,1000`
+- sequence pairs per scenario and problem size: `2`
+- timed repetitions per case and runtime: `10`
+- warmup repetitions: `2`
 
-1. Install the runtime:
-   - `python -m pip install tflite-runtime`
-2. Use a small Python test script to load the TFLite model and run inference.
+The benchmark scenarios are intentionally compact and biologically motivated:
 
-## 6) ESP32 inference overview
+- homologous regions with a small number of substitutions
+- indel-heavy pairs with insertion or deletion events
+- conserved motifs embedded in unrelated flanking sequence
+- short fragments embedded in a longer sequence context
+- random pairs as a baseline control
 
-Important: The model expects a 2048-bit Morgan fingerprint as input. Computing that fingerprint requires RDKit, which is too heavy for ESP32. You have two options:
+Case generation now lives entirely in `helpers/case_generation.py`. For each problem size, every scenario produces the same number of sequence pairs, controlled by `--cases-per-length`. Those exact pairs are then reused across CPython, CPython JIT, PyPy, and Cython for a fair comparison.
 
-Option A (simplest):
+The result files also record `target_size`, `sequence_a_length`, and `sequence_b_length` so asymmetric local-alignment cases remain explicit in the data.
 
-- Compute the fingerprint on a PC and send the 2048 values to the ESP32 over serial/Wi-Fi.
+Within `helpers/smithwaterman/`, the pure-Python baseline lives in `smith_waterman_python.py` and the matching Cython port lives in `smith_waterman_cython.pyx`.
 
-Option B (fully on-device):
+## Executor Selection
 
-- Change the input feature to something you can compute on the ESP32.
-- Retrain the model with that new feature.
+External tools should call `helpers.smithwaterman.smith_waterman_score` only.
 
-If you want a minimal ESP32 inference example, see the TFLite Micro skeleton below.
+- `EXECUTOR=DEFAULT` uses the pure Python implementation on the active interpreter.
+- `EXECUTOR=JIT` uses the same Python implementation with CPython JIT enabled via `PYTHON_JIT=1`.
+- `EXECUTOR=PYPY` uses the same Python implementation when the worker is launched with a PyPy executable.
+- `EXECUTOR=CYTHON` loads or builds the Cython extension automatically and routes calls through it.
 
-## 7) ESP32 setup (beginner steps)
+The benchmark runner sets `EXECUTOR` automatically for each subprocess it launches.
 
-These steps use the Arduino IDE because it is the simplest option for beginners.
+## Commands
 
-### 7.1 Install the Arduino IDE
+Run benchmarks and generate plots:
 
-1. Download Arduino IDE 2.x from <https://www.arduino.cc/en/software>.
-2. Install it and launch the IDE.
+```powershell
+python Code/benchmark_sw.py --mode both
+```
 
-### 7.2 Add ESP32 support
+Run the same methodology on larger problem sizes:
 
-1. In Arduino IDE, open: File -> Preferences.
-2. In "Additional Boards Manager URLs", paste:
-   - <https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json>
-3. Click OK.
-4. Go to Tools -> Board -> Boards Manager.
-5. Search for "esp32" and install "esp32 by Espressif Systems".
+```powershell
+python Code/benchmark_sw.py --problem-sizes 100,1000,10000 --cases-per-length 1 --runs 1 --warmup 0
+```
 
-### 7.3 Connect your ESP32
+Generate plots from existing raw data without rerunning benchmarks:
 
-1. Plug the ESP32 into your PC using a USB cable (data-capable, not charge-only).
-2. Wait for Windows to install the USB driver.
-   - If it fails, install the CP210x or CH340 driver (depends on your board).
-3. In Arduino IDE, select your board:
-   - Tools -> Board -> ESP32 Arduino -> your ESP32 board (example: "ESP32 Dev Module").
-4. Select the COM port:
-   - Tools -> Port -> COMx.
+```powershell
+python Code/benchmark_sw.py --mode plot
+```
 
-### 7.4 Add TFLite Micro
+## Output
 
-There are two common paths:
+By default, outputs are written to `Code/Results/`:
 
-Option A (Arduino library):
+- `raw_runs.csv`: one row per case and runtime measurement, including target and per-sequence lengths
+- `case_scores.csv`: generated sequence pairs and validated scores, including target and per-sequence lengths
+- `summary_stats.csv`: aggregated timing and memory statistics
+- `plots/runtime_by_scenario.pdf`: runtime curves by scenario and problem size
+- `plots/memory_by_scenario.pdf`: memory curves by scenario and problem size
+- `plots/speedup_vs_cpython.pdf`: runtime speedup relative to CPython
+- `benchmark_config.txt`: benchmark settings used for the run
 
-1. Open Sketch -> Include Library -> Manage Libraries.
-2. Search for "TensorFlowLite" and install the library by Arduino.
+## Notes
 
-Option B (ESP-IDF component):
-
-- Use the ESP-IDF build system and add the TFLite Micro component.
-- This is more advanced; start with Option A if you are new.
-
-### 7.5 Prepare the model for firmware
-
-1. Generate a C array from the TFLite file:
-   - `xxd -i .\artifacts\logp_model.tflite > model_data.h`
-2. Move `model_data.h` next to your Arduino sketch or project source.
-3. The generated array is named `logp_model_tflite`; rename it to `g_model_data`
-   (or update the skeleton to use the generated name).
-
-### 7.6 Minimal TFLite Micro skeleton
-
-See `tflite_micro_skeleton.cpp` in this folder. It shows:
-
-- How to load the model
-- How to allocate the tensor arena
-- How to call `Invoke()`
-
-You still need to provide the 2048-element input vector (Morgan fingerprint).
-On ESP32, compute that on a host PC and send the input over serial/Wi-Fi.
-
-## 8) Files in this folder
-
-- `train_logp_tflite.py`: Training script that exports a TFLite model.
-- `tflite_test.cpp`: Placeholder C++ test file.
-- `tflite_micro_skeleton.cpp`: Minimal ESP32 TFLite Micro inference skeleton.
-- `Dataset/250k_rndm_zinc_drugs_clean_3.csv`: Training data.
+- Runtime is measured with `time.perf_counter_ns`.
+- Memory is approximated with simple per-case resident-set-size deltas via `psutil`.
+- Each runtime runs in its own worker subprocess for the full benchmark workload, so PyPy and CPython JIT can warm up normally.
+- Within that worker, each case records RSS before and after execution, while timing only measures the timed run loop.
+- The benchmark enforces correctness by comparing every runtime against the CPython baseline score for the same generated case.
+- The Cython extension is built automatically when needed. If the compiled module is missing, `helpers.smithwaterman` runs `python setup.py build_ext --inplace` from `helpers/smithwaterman/`.
+- The local `setup.py` uses static-runtime flags where the platform toolchain supports them.

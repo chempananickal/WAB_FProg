@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=75", "wheel", "Cython>=3.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smith-waterman-runtime-suite"
+version = "0.1.0"
+description = "Cross-runtime Smith-Waterman validation and benchmarking suite"
+readme = "README.md"
+requires-python = ">=3.14"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["helpers*"]

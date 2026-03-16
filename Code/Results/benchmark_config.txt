@@ -1,0 +1,7 @@
+problem_sizes: [100, 200, 400, 600, 800, 1000]
+cases_per_length: 2
+runs: 10
+warmup: 2
+seed: 42
+pypy: pypy3
+output_dir: Code\Results
