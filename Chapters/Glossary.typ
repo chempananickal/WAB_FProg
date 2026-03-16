@@ -2,11 +2,6 @@
 #let abbreviation_group = "Abbreviations"
 
 #let all_glossary_entries = (
-  smith_waterman: (
-    short: "Smith-Waterman alignment",
-    description: "A dynamic-programming algorithm for local sequence alignment that computes the highest-scoring matching subsequences between two input sequences.",
-    group: glossary_group,
-  ),
   local_alignment: (
     short: "local alignment",
     description: "An alignment strategy that searches for the best matching subsections of two sequences instead of forcing an end-to-end alignment.",

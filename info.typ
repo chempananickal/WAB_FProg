@@ -1,6 +1,6 @@
 #let common_info = (
-  thesis_title: "Comparing CPython 3.14 JIT, PyPy, and Cython for Smith-Waterman Sequence Alignment",
-  thesis_subtitle: "Performance Evaluation and a Robust Cross-Runtime Testing Suite",
+  thesis_title: "Performance of Different Python Runtimes for a Bioinformatics Algorithm",
+  thesis_subtitle: "Testing the Smith-Waterman algorithm across CPython, PyPy, and Python 3.14's native JIT",
   author_name: "Rubin Chempananickal James",
   author_email: "rubin.chempananickal-james@stud-provadis-hochschule.de",
   matriculation_number: "D876",
@@ -11,10 +11,16 @@
   submission_date: datetime.today(),
 )
 
-#let wab_info = common_info + (
-  document_type: "WAB",
+#let wab_info = (
+  common_info
+    + (
+      document_type: "WAB",
+    )
 )
 
-#let exposee_info = common_info + (
-  document_type: "Exposé",
+#let exposee_info = (
+  common_info
+    + (
+      document_type: "WAB Exposé",
+    )
 )
