@@ -1,5 +1,8 @@
 #import "info.typ": wab_info
-#import "template.typ": ai_declaration_table, declaration_text, numbered_section, paper, theme-compact-no-title, title_page, unnumbered_section
+#import "template.typ": (
+  ai_declaration_table, declaration_text, numbered_section, paper, theme-compact-no-title, title_page,
+  unnumbered_section,
+)
 #import "@preview/glossy:0.9.0": glossary, init-glossary
 #import "Chapters/Glossary.typ": all_glossary_entries
 #import "Chapters/Abstract.typ": abstract_content
@@ -11,11 +14,11 @@
 
 #show: paper
 
-#set page(numbering: "I")
-#counter(page).update(1)
 
 #title_page(wab_info)
 
+#set page(numbering: "I")
+#counter(page).update(2)
 #unnumbered_section([Abstract], abstract_content)
 
 #numbered_section([

@@ -1,5 +1,5 @@
 #let common_info = (
-  thesis_title: "Performance of (Different) Python Runtimes for a Bioinformatics Algorithm",
+  thesis_title: "Performance of Various Python Runtimes for a Bioinformatics Algorithm",
   thesis_subtitle: "Testing the Smith-Waterman algorithm across CPython, PyPy, and Python 3.14's native JIT",
   author_name: "Rubin Chempananickal James",
   author_email: "rubin.chempananickal-james@stud-provadis-hochschule.de",
