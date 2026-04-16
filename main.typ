@@ -1,7 +1,6 @@
 #import "info.typ": wab_info
 #import "template.typ": (
-  ai_declaration_table, declaration_text, numbered_section, paper, theme-compact-no-title, title_page,
-  unnumbered_section,
+  ai_declaration_table, declaration_text, numbered_section, paper, theme-no-title, title_page, unnumbered_section,
 )
 #import "@preview/glossy:0.9.0": glossary, init-glossary
 #import "Chapters/Glossary.typ": all_glossary_entries
@@ -26,13 +25,13 @@
 ])
 
 #unnumbered_section([Glossary], glossary(
-  theme: theme-compact-no-title,
+  theme: theme-no-title,
   groups: ("Glossary",),
   show-all: true,
 ))
 
 #unnumbered_section([Abbreviations], glossary(
-  theme: theme-compact-no-title,
+  theme: theme-no-title,
   groups: ("Abbreviations",),
   show-all: true,
 ))
@@ -49,7 +48,7 @@
 #counter(page).update(1)
 
 #numbered_section([
-  #bibliography("references.bib", title: [References], full: true)
+  #bibliography("references.bib", title: [References], full: true, style: "american-medical-association")
 ])
 
 #unnumbered_section([AI Declaration], [

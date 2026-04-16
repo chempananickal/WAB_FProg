@@ -1,7 +1,7 @@
 #let body-font = "Times New Roman"
-#let display-font = "Calibri"
+#let display-font = "Arial"
 
-#import "@preview/glossy:0.9.0": theme-compact
+#import "@preview/glossy:0.9.0": theme-academic
 
 #let paper(body) = {
   set page(
@@ -17,6 +17,7 @@
   set par(justify: true, leading: 0.72em)
   set heading(numbering: "1.")
   show heading: set text(font: display-font)
+  show heading: set block(below: 2em)
 
   body
 }
@@ -35,10 +36,10 @@
 
 #let numbered_section(body) = major_section(body)
 
-#let theme-compact-no-title = (
+#let theme-no-title = (
   section: (title, body) => body,
-  group: theme-compact.group,
-  entry: theme-compact.entry,
+  group: theme-academic.group,
+  entry: theme-academic.entry,
 )
 
 #let title_page(info) = [
