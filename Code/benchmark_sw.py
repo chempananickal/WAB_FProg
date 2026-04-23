@@ -21,13 +21,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--problem-sizes",
         type=str,
-        default="50,75,100,150,250,400,600,800,1000,1500,2000,3000,5000,8000,10000",
+        default="100,500,1000,5000,10000",
         help="Comma-separated benchmark size targets, e.g. 100,1000,10000",
     )
     parser.add_argument(
         "--cases-per-length",
         type=int,
-        default=2,
+        default=10,
         help="How many sequence pairs to generate per scenario and problem size.",
     )
     parser.add_argument(

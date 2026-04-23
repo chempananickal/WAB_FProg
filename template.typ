@@ -98,8 +98,8 @@
     columns: (1fr, 1fr),
     column-gutter: 1cm,
     [Frankfurt, #info.submission_date.display("[day].[month].[year]")],
-    [#box(width: 6cm, inset: 0pt, stroke: (bottom: 0.6pt))[]],
+    [#box(width: 7.5cm, inset: 10pt, stroke: (bottom: 0.6pt))[]],
   )
 
-  #align(right)[#text(size: 10pt)[#info.author_name]]
+  #align(right)[#text(size: 12pt)[#info.author_name]]
 ]
