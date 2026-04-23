@@ -24,6 +24,16 @@
   #outline(title: [Contents])
 ])
 
+#unnumbered_section([List of Figures], outline(
+  title: none,
+  target: figure.where(kind: image),
+))
+
+#unnumbered_section([List of Tables], outline(
+  title: none,
+  target: figure.where(kind: table),
+))
+
 #unnumbered_section([Glossary], glossary(
   theme: theme-no-title,
   groups: ("Glossary",),
