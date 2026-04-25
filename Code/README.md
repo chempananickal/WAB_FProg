@@ -67,7 +67,7 @@ The benchmark scenarios are intentionally compact and biologically motivated:
 - short fragments embedded in a longer sequence context
 - random pairs as a baseline control
 
-Case generation now lives entirely in `helpers/case_generation.py`. For each problem size, every scenario produces the same number of sequence pairs, controlled by `--cases-per-length`. Those exact pairs are then reused across CPython, CPython JIT, PyPy, and Cython for a fair comparison.
+Case generation lives entirely in `helpers/case_generation.py`. For each problem size, every scenario produces the same number of sequence pairs, controlled by `--cases-per-length`. Those exact pairs are then reused across CPython, CPython JIT, PyPy, and Cython for a fair comparison.
 
 The result files also record `target_size`, `sequence_a_length`, and `sequence_b_length` so asymmetric local-alignment cases remain explicit in the data.
 
@@ -108,7 +108,7 @@ python Code/benchmark_sw.py --mode plot
 
 By default, outputs are written to `Code/Results/`:
 
-- `raw_runs.csv`: one row per case and runtime measurement, including target and per-sequence lengths
+- `per_case_results.csv`: one row per case and runtime measurement, including target and per-sequence lengths
 - `case_scores.csv`: generated sequence pairs and validated scores, including target and per-sequence lengths
 - `summary_stats.csv`: aggregated timing and memory statistics
 - `plots/runtime_by_scenario.pdf`: runtime curves by scenario and problem size

@@ -127,6 +127,7 @@ def run_benchmarks(
 
     rows: list[dict[str, Any]] = []
     case_rows: list[dict[str, Any]] = []
+    run_rows: list[dict[str, Any]] = []
 
     repetitions_per_case = warmup + runs
     work_units_per_runtime = sum(
@@ -231,6 +232,31 @@ def run_benchmarks(
                 }
             )
 
+            for i, t_ns in enumerate(score_row.get("warmup_times_ns", [])):
+                run_rows.append(
+                    {
+                        "case_id": case_definition.case_id,
+                        "scenario": case_definition.scenario,
+                        "target_size": case_definition.target_size,
+                        "algorithm": runtime_name,
+                        "run_index": i,
+                        "is_warmup": True,
+                        "time_ms": t_ns / 1_000_000,
+                    }
+                )
+            for i, t_ns in enumerate(score_row.get("run_times_ns", [])):
+                run_rows.append(
+                    {
+                        "case_id": case_definition.case_id,
+                        "scenario": case_definition.scenario,
+                        "target_size": case_definition.target_size,
+                        "algorithm": runtime_name,
+                        "run_index": warmup + i,
+                        "is_warmup": False,
+                        "time_ms": t_ns / 1_000_000,
+                    }
+                )
+
         completed_work_units += work_units_per_runtime
         completed_cases += len(cases)
 
@@ -240,7 +266,7 @@ def run_benchmarks(
         sys.stdout.write("\n")
         sys.stdout.flush()
 
-    return pd.DataFrame(rows), pd.DataFrame(case_rows)
+    return pd.DataFrame(rows), pd.DataFrame(case_rows), pd.DataFrame(run_rows)
 
 
 def _run_runtime_payload(

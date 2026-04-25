@@ -54,7 +54,8 @@ def main() -> int:
     completed_work_units = 0
 
     for case_index, case in enumerate(cases, start=1):
-        score, median_ns = _measure_case(case.sequence_a, case.sequence_b, args.warmup, args.runs)
+        score, warmup_times, run_times = _measure_case(case.sequence_a, case.sequence_b, args.warmup, args.runs)
+        median_ns = int(statistics.median(run_times))
         benchmark_samples.append(median_ns)
         score_records.append(
             {
@@ -65,6 +66,8 @@ def main() -> int:
                 "sequence_b_length": case.sequence_b_length,
                 "score": score,
                 "median_ns": median_ns,
+                "warmup_times_ns": warmup_times,
+                "run_times_ns": run_times,
             }
         )
         completed_work_units += _estimate_case_work_units(
@@ -113,18 +116,23 @@ def main() -> int:
     return 0
 
 
-def _measure_case(sequence_a: str, sequence_b: str, warmup: int, runs: int) -> tuple[int, int]:
+def _measure_case(
+    sequence_a: str, sequence_b: str, warmup: int, runs: int
+) -> tuple[int, list[int], list[int]]:
+    warmup_times: list[int] = []
     for _ in range(warmup):
+        t0 = time.perf_counter_ns()
         smith_waterman_score(sequence_a, sequence_b)
+        warmup_times.append(time.perf_counter_ns() - t0)
 
-    times: list[int] = []
+    run_times: list[int] = []
     score = 0
     for _ in range(max(1, runs)):
         t0 = time.perf_counter_ns()
         score = smith_waterman_score(sequence_a, sequence_b)
-        times.append(time.perf_counter_ns() - t0)
+        run_times.append(time.perf_counter_ns() - t0)
 
-    return score, int(statistics.median(times))
+    return score, warmup_times, run_times
 
 
 def _estimate_case_work_units(sequence_a: str, sequence_b: str, repetitions: int) -> int:

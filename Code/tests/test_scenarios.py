@@ -76,7 +76,7 @@ def test_run_benchmarks_preserves_cases_with_same_name_across_lengths(monkeypatc
     monkeypatch.setattr(benchmarking_module, "generate_cases", lambda **kwargs: cases)
     monkeypatch.setattr(benchmarking_module, "_run_runtime_payload", fake_run_runtime_payload)
 
-    raw_df, case_df = benchmarking_module.run_benchmarks(
+    raw_df, case_df, _per_run_df = benchmarking_module.run_benchmarks(
         problem_sizes=[100, 1000],
         cases_per_length=1,
         runs=1,

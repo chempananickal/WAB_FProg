@@ -21,7 +21,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--problem-sizes",
         type=str,
-        default="100,500,1000,5000,10000",
+        default="100,200,500,800,1000,2000,5000,8000,10000",
         help="Comma-separated benchmark size targets, e.g. 100,1000,10000",
     )
     parser.add_argument(
@@ -84,7 +84,7 @@ def main() -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     if args.mode in {"run", "both"}:
-        raw_df, cases_df = run_benchmarks(
+        raw_df, cases_df, per_run_df = run_benchmarks(
             problem_sizes=problem_sizes,
             cases_per_length=args.cases_per_length,
             runs=args.runs,
@@ -93,8 +93,9 @@ def main() -> None:
             pypy_executable=args.pypy,
             show_progress=args.show_progress,
         )
-        raw_df.to_csv(output_dir / "raw_runs.csv", index=False)
+        raw_df.to_csv(output_dir / "per_case_results.csv", index=False)
         cases_df.to_csv(output_dir / "case_scores.csv", index=False)
+        per_run_df.to_csv(output_dir / "per_run_times.csv", index=False)
 
         config = {
             "problem_sizes": problem_sizes,
@@ -120,8 +121,9 @@ def main() -> None:
             print(f"Saved plot to: {plot_path}")
 
     if args.mode in {"run", "both"}:
-        print(f"Saved raw data to: {output_dir / 'raw_runs.csv'}")
+        print(f"Saved per-case results to: {output_dir / 'per_case_results.csv'}")
         print(f"Saved case scores to: {output_dir / 'case_scores.csv'}")
+        print(f"Saved per-run times to: {output_dir / 'per_run_times.csv'}")
 
 
 if __name__ == "__main__":

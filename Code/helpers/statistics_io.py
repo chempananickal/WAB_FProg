@@ -37,7 +37,7 @@ def aggregate_results(raw_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def load_raw_results(output_dir: Path) -> pd.DataFrame:
-    raw_path = output_dir / "raw_runs.csv"
+    raw_path = output_dir / "per_case_results.csv"
     if not raw_path.exists():
         raise FileNotFoundError(
             f"Missing raw results at {raw_path}. Run benchmark_sw.py with --mode run or --mode both first."
