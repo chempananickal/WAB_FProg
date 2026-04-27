@@ -113,3 +113,68 @@ URL={https://bioinfo.dcc.ufmg.br/history/}
         url = {https://modular.com/mojo},
         urlDate = {2026-04-27}
 }
+
+@inproceedings{py2cy,
+author = {Zhong, James and Hort, Max and Sarro, Federica},
+title = {Py2Cy: a genetic improvement tool to speed up python},
+year = {2022},
+isbn = {9781450392686},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3520304.3534037},
+doi = {10.1145/3520304.3534037},
+abstract = {Due to its ease of use and wide range of custom libraries, Python has quickly gained popularity and is used by a wide range of developers all over the world. While Python allows for fast writing of source code, the resulting programs are slow to execute when compared to programs written in other programming languages like C. One of the reasons for its slow execution time is the dynamic typing of variables. Cython is an extension to Python, which can achieve execution speed-ups by compiler optimization. One possibility for improvements is the use of static typing, which can be added to Python scripts by developers. To alleviate the need for manual effort, we create Py2Cy, a Genetic Improvement tool for automatically converting Python scripts to statically typed Cython scripts. To show the feasibility of improving runtime with Py2Cy, we optimize a Python script for generating Fibonacci numbers. The results show that Py2Cy is able to speed up the execution time by up to a factor of 18.},
+booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference Companion},
+pages = {1950–1955},
+numpages = {6},
+keywords = {execution time, genetic improvement, performance, python},
+location = {Boston, Massachusetts},
+series = {GECCO '22}
+}
+
+@article{hope,
+title = {HOPE: A Python just-in-time compiler for astrophysical computations},
+journal = {Astronomy and Computing},
+volume = {10},
+pages = {1-8},
+year = {2015},
+issn = {2213-1337},
+doi = {https://doi.org/10.1016/j.ascom.2014.12.001},
+url = {https://www.sciencedirect.com/science/article/pii/S2213133714000687},
+author = {J. Akeret and L. Gamper and A. Amara and A. Refregier},
+keywords = {Python, Just-in-time compiler, Benchmark},
+abstract = {The Python programming language is becoming increasingly popular for scientific applications due to its simplicity, versatility, and the broad range of its libraries. A drawback of this dynamic language, however, is its low runtime performance which limits its applicability for large simulations and for the analysis of large data sets, as is common in astrophysics and cosmology. While various frameworks have been developed to address this limitation, most focus on covering the complete language set, and either force the user to alter the code or are not able to reach the full speed of an optimised native compiled language. In order to combine the ease of Python and the speed of C++, we developed HOPE, a specialised Python just-in-time (JIT) compiler designed for numerical astrophysical applications. HOPE focuses on a subset of the language and is able to translate Python code into C++ while performing numerical optimisation on mathematical expressions at runtime. To enable the JIT compilation, the user only needs to add a decorator to the function definition. We assess the performance of HOPE by performing a series of benchmarks and compare its execution speed with that of plain Python, C++ and the other existing frameworks. We find that HOPE improves the performance compared to plain Python by a factor of 2 to 120, achieves speeds comparable to that of C++, and often exceeds the speed of the existing solutions. We discuss the differences between HOPE and the other frameworks, as well as future extensions of its capabilities. The fully documented HOPE package is available at http://hope.phys.ethz.ch and is published under the GPLv3 license on PyPI and GitHub.}
+}
+
+@inproceedings{numba,
+author = {Lam, Siu Kwan and Pitrou, Antoine and Seibert, Stanley},
+title = {Numba: a LLVM-based Python JIT compiler},
+year = {2015},
+isbn = {9781450340052},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2833157.2833162},
+doi = {10.1145/2833157.2833162},
+abstract = {Dynamic, interpreted languages, like Python, are attractive for domain-experts and scientists experimenting with new ideas. However, the performance of the interpreter is often a barrier when scaling to larger data sets. This paper presents a just-in-time compiler for Python that focuses in scientific and array-oriented computing. Starting with the simple syntax of Python, Numba compiles a subset of the language into efficient machine code that is comparable in performance to a traditional compiled language. In addition, we share our experience in building a JIT compiler using LLVM[1].},
+booktitle = {Proceedings of the Second Workshop on the LLVM Compiler Infrastructure in HPC},
+articleno = {7},
+numpages = {6},
+keywords = {LLVM, Python, compiler},
+location = {Austin, Texas},
+series = {LLVM '15}
+}
+
+@article{pythran,
+doi = {10.1088/1749-4680/8/1/014001},
+url = {https://doi.org/10.1088/1749-4680/8/1/014001},
+year = {2015},
+month = {mar},
+publisher = {IOP Publishing},
+volume = {8},
+number = {1},
+pages = {014001},
+author = {Guelton, Serge and Brunet, Pierrick and Amini, Mehdi and Merlini, Adrien and Corbillon, Xavier and Raynaud, Alan},
+title = {Pythran: enabling static optimization of scientific Python programs},
+journal = {Computational Science & Discovery},
+abstract = {Pythran is an open source static compiler that turns modules written in a subset of Python language into native ones. Assuming that scientific modules do not rely much on the dynamic features of the language, it trades them for powerful, possibly inter-procedural, optimizations. These optimizations include detection of pure functions, temporary allocation removal, constant folding, Numpy ufunc fusion and parallelization, explicit thread-level parallelism through OpenMP annotations, false variable polymorphism pruning, and automatic vector instruction generation such as AVX or SSE. In addition to these compilation steps, Pythran provides a C++ runtime library that leverages the C++ STL to provide generic containers, and the Numeric Template Toolbox for Numpy support. It takes advantage of modern C++11 features such as variadic templates, type inference, move semantics and perfect forwarding, as well as classical idioms such as expression templates. Unlike the Cython approach, Pythran input code remains compatible with the Python interpreter. Output code is generally as efficient as the annotated Cython equivalent, if not more, but without the backward compatibility loss.}
+}

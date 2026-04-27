@@ -58,7 +58,7 @@
 #counter(page).update(1)
 
 #numbered_section([
-  #bibliography("references.bib", title: [References], full: true, style: "american-medical-association")
+  #bibliography("references.bib", title: [References], style: "american-medical-association")
 ])
 
 #unnumbered_section([AI Declaration], [

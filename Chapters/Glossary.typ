@@ -12,6 +12,11 @@
     description: "The initial execution period in which a JIT-enabled runtime collects profiling information and may compile hot paths before reaching steady-state performance.",
     group: glossary_group,
   ),
+  copy_and_patch: (
+    short: "copy-and-patch",
+    description: "A JIT compilation strategy where optimized versions of certain functions are written in a lower-level language and then dynamically patched into the interpreter at runtime.",
+    group: glossary_group,
+  ),
   jit: (
     short: "JIT",
     long: "Just-in-Time",
@@ -35,6 +40,11 @@
   msvc: (
     short: "MSVC",
     long: "Microsoft Visual C++",
+    group: abbreviation_group,
+  ),
+  dsl: (
+    short: "DSL",
+    long: "Domain-Specific Language",
     group: abbreviation_group,
   ),
 )
