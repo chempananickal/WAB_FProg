@@ -1,5 +1,5 @@
-#let body-font = "Times New Roman"
-#let display-font = "Arial"
+#let body-font = "New Computer Modern"
+#let display-font = "CMU Sans Serif"
 
 #import "@preview/glossy:0.9.0": theme-basic
 

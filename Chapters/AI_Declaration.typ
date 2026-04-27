@@ -53,4 +53,9 @@
     prompt: [Help me create a python script that creates a figure to represent the Smith-Waterman algorithm's dynamic programming matrix and traceback path for a given pair of sequences.],
     usage: [Created `Code/swfigure.py`, which generates a PDF/PNG figure of the Smith-Waterman dynamic programming matrix.],
   ),
+  (
+    system: [GitHub Copilot 11],
+    prompt: [Write a piece of Python code that can generate a figure that shows the steps in the Cython transpilation workflow. Call it cythonfigure.py and save the figure (PNG and PDF) to Code/Graphics.],
+    usage: [[After a few iterations\...] Created `Code/cythonfigure.py`, which generates a PDF/PNG figure of the Cython build pipeline from the `.pyx` source file to the compiled extension module.],
+  ),
 )

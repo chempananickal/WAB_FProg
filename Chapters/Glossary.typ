@@ -27,4 +27,14 @@
     long: "Python Enhancement Proposal",
     group: abbreviation_group,
   ),
+  gcc: (
+    short: "GCC",
+    long: "GNU Compiler Collection",
+    group: abbreviation_group,
+  ),
+  msvc: (
+    short: "MSVC",
+    long: "Microsoft Visual C++",
+    group: abbreviation_group,
+  ),
 )
