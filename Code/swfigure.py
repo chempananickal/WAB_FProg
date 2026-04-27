@@ -306,21 +306,16 @@ def draw_matrix_panel(ax: plt.Axes, result: AlignmentResult) -> None:
     # set_ticks_position must come BEFORE set_xticklabels; calling it
     # afterwards recreates the Text objects and discards any colour changes.
     #
-    # Only highlight rows/cols that appear in a *diagonal* traceback step
-    # (match or mismatch).  Gap-only rows/cols are left in the default colour.
-    diagonal_rows: set[int] = set()
-    diagonal_cols: set[int] = set()
-    path = result.traceback_path
-    if path:
-        # The first cell is always an aligned (non-gap) position.
-        diagonal_rows.add(path[0][0])
-        diagonal_cols.add(path[0][1])
-    for k in range(1, len(path)):
-        r1, c1 = path[k - 1]
-        r2, c2 = path[k]
-        if r2 - r1 == 1 and c2 - c1 == 1:
-            diagonal_rows.add(r2)
-            diagonal_cols.add(c2)
+    # Only highlight sequence labels for traceback cells that are actual
+    # character matches. Diagonal mismatch steps stay in the default colour.
+    matched_rows: set[int] = set()
+    matched_cols: set[int] = set()
+    for row, column in result.traceback_path:
+        if row == 0 or column == 0:
+            continue
+        if result.sequence_a[row - 1] == result.sequence_b[column - 1]:
+            matched_rows.add(row)
+            matched_cols.add(column)
 
     ax.xaxis.set_ticks_position("top")
     ax.xaxis.set_label_position("top")
@@ -341,9 +336,9 @@ def draw_matrix_panel(ax: plt.Axes, result: AlignmentResult) -> None:
 
     # Colour the tick labels that fall along diagonal traceback steps in blue.
     for j, lbl in enumerate(ax.get_xticklabels()):
-        lbl.set_color("#1565c0" if j in diagonal_cols else _TEXT_HEAD)
+        lbl.set_color("#1565c0" if j in matched_cols else _TEXT_HEAD)
     for i, lbl in enumerate(ax.get_yticklabels()):
-        lbl.set_color("#1565c0" if i in diagonal_rows else _TEXT_HEAD)
+        lbl.set_color("#1565c0" if i in matched_rows else _TEXT_HEAD)
 
     cbar = plt.colorbar(im, ax=ax, fraction=0.038, pad=0.02)
     cbar.set_label("Cell score", fontsize=9)

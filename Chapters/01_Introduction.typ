@@ -34,7 +34,7 @@
 
   PyPy runs on RPython @rpython, a subset of Python that is used to implement the PyPy interpreter itself. When a Python program is run on PyPy, the interpreter starts executing the code using an interpreter loop, similar to CPython. However, as it runs, it collects profiling information about which parts of the code are executed frequently (called "hot loops"). When it identifies such hot loops, it compiles them into native machine code using a tracing @jit compiler, which can lead to significant performance improvements for long-running programs after a @warm_up_phase @pypy_interpreter.
 
-  The latest stable version of PyPy as of writing supports upto Python 3.11 @pypy, and according to the PyPy team, it is on average 3 times faster than CPython 3.11 @pypy_performance.
+  The latest stable version of PyPy as of writing supports upto Python 3.11 @pypy, and according to the PyPy team, it is on average 2.9 times faster than CPython 3.11 @pypy_performance.
 
   === CPython @jit
 
@@ -42,13 +42,19 @@
 
   === The Benchmarking Algorithm
 
-  The @sw algorithm @smith_waterman is a very common algorithm in bioinformatics. It is a @local_alignment algorithm that computes the highest-scoring matching subsequence(s) between two DNA/RNA/protein sequences (see @swfigure). It is a very computationally intensive algorithm, with a time complexity of O(m*n) for two sequences of length m and n, so a naive implementation in Python is expected to perform very poorly. The algorithm nevertheless has two nested "hot loops", which the performance-minded runtimes could potentially optimize. That, and the fact that it is still the best non-heuristic local alignment algorithm, and that it is relatively simple to implement (fewer than 100 lines of code), were the reasons why it was chosen as the algorithm for this performance comparison.
+  The @sw algorithm @smith_waterman is a @local_alignment algorithm that computes the highest-scoring matching subsequence(s) between two DNA/RNA/protein sequences, and is therefore a popular choice in bioinformatics. The scores are computed using dynamic programming, where a matrix of size $m*n$ is filled in based on the scores of neighboring cells, where $m$ and $n$ are the lengths of the two sequences being aligned. This involves assigning a score to each cell based on the scores of the top, left, and top-left neighboring cells, and the scoring scheme for matches, mismatches, and gaps (usually a +2 score for a match, -1 for a mismatch, and -2 for a gap, see @swfigure).
 
   // Example of a smith-waterman alignment:
   #figure(
     image("../Code/Graphics/smith_waterman_alignment_example.pdf", width: 75%),
-    caption: "Example of a local alignment between two DNA sequences, as produced by the Smith-Waterman algorithm.",
+    caption: "Example of a local alignment between two DNA sequences using the Smith-Waterman algorithm. The final aligned subsequence is ACGTCG, with a score of 9.",
   ) <swfigure>
+
+  The @sw algorithm has a time complexity of $O(m*n)$ for two sequences of length $m$ and $n$ because it compares each element of one sequence with each element of the other, so a naive implementation in Python is expected to perform very poorly. It nevertheless has two nested "hot loops", which the performance-minded runtimes could potentially optimize. That, and the fact that it is still the best non-heuristic local alignment algorithm, and that it is relatively simple to implement (fewer than 100 lines of code), were the reasons why it was chosen as the algorithm for this performance comparison.
+
+  == Previous Work
+
+  The PyPy team regularly benchmarks their implementation against CPython across a variety of workloads, and they have their results available on a dedicated section of their website @pypy_performance.
 
   == Research Question
 
@@ -56,9 +62,9 @@
 
   == Hypotheses
 
-  - H0: There is no significant difference in the execution time of the Smith-Waterman algorithm across CPython, CPython JIT, PyPy, and Cython.
+  - H0: There is no significant difference in the execution time of the @sw:long algorithm across CPython, CPython JIT, PyPy, and Cython.
 
-  - H1: There is a significant difference in the execution time of the Smith-Waterman algorithm across CPython, CPython JIT, PyPy, and Cython.
+  - H1: There is a significant difference in the execution time of the @sw:long algorithm across CPython, CPython JIT, PyPy, and Cython.
 
 
 
