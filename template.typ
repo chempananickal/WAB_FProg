@@ -1,7 +1,7 @@
 #let body-font = "Times New Roman"
 #let display-font = "Arial"
 
-#import "@preview/glossy:0.9.0": theme-academic
+#import "@preview/glossy:0.9.0": theme-basic
 
 #let paper(body) = {
   set page(
@@ -38,8 +38,8 @@
 
 #let theme-no-title = (
   section: (title, body) => body,
-  group: theme-academic.group,
-  entry: theme-academic.entry,
+  group: theme-basic.group,
+  entry: theme-basic.entry,
 )
 
 #let title_page(info) = [
@@ -79,15 +79,24 @@
 ]
 
 
-#let ai_declaration_table(entries) = table(
-  columns: (1.1fr, 2.4fr, 2fr),
-  inset: 8pt,
-  align: (left, left, left),
-  table.header(
-    [#text(font: display-font)[*System*]], [#text(font: display-font)[*Prompt*]], [#text(font: display-font)[*Usage*]]
-  ),
-  ..entries.map(entry => ([#entry.system], [#entry.prompt], [#entry.usage])).flatten(),
-)
+#let ai_declaration_table(entries) = {
+  show table.cell: set block(breakable: false)
+  table(
+    columns: (1.1fr, 2.4fr, 2fr),
+    inset: 8pt,
+    align: (left, left, left),
+    table.header(
+      [#text(font: display-font)[*System*]], [#text(font: display-font)[*Prompt*]], [#text(font: display-font)[*Usage*]]
+    ),
+    ..entries
+      .map(entry => (
+        [#text(size: 11pt)[#entry.system]],
+        [#text(size: 11pt)[#entry.prompt]],
+        [#text(size: 11pt)[#entry.usage]],
+      ))
+      .flatten(),
+  )
+}
 
 #let declaration_text(info) = [
   I hereby confirm that I have personally and independently prepared the present work and have not used any sources or aids other than those specified. All passages taken verbatim or in substance from other sources are identified as such. The drawings, illustrations and tables in this work are created by me or have been provided with an appropriate source reference. This work has not been submitted by me to any other university in the same or similar form for the acquisition of an academic degree.

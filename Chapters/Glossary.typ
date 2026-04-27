@@ -12,24 +12,9 @@
     description: "The initial execution period in which a JIT-enabled runtime collects profiling information and may compile hot paths before reaching steady-state performance.",
     group: glossary_group,
   ),
-  benchmark_harness: (
-    short: "benchmark harness",
-    description: "The controlled code and tooling used to execute reproducible performance measurements across implementations and runtimes.",
-    group: glossary_group,
-  ),
-  differential_testing: (
-    short: "differential testing",
-    description: "A testing strategy that compares the outputs of multiple implementations against the same inputs to detect behavioral deviations.",
-    group: glossary_group,
-  ),
   jit: (
     short: "JIT",
     long: "Just-in-Time",
-    group: abbreviation_group,
-  ),
-  dp: (
-    short: "DP",
-    long: "Dynamic Programming",
     group: abbreviation_group,
   ),
   sw: (
@@ -37,9 +22,9 @@
     long: "Smith-Waterman",
     group: abbreviation_group,
   ),
-  ci: (
-    short: "CI",
-    long: "Continuous Integration",
+  pep: (
+    short: "PEP",
+    long: "Python Enhancement Proposal",
     group: abbreviation_group,
   ),
 )

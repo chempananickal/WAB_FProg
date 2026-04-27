@@ -48,4 +48,9 @@
     prompt: [Move the run convergence plotting stuff to a new jupyter notebook. I might need to isolate that to singular scenarios too. Also move the scaling exponent plotting code in there.],
     usage: [Created `Code/plotting.ipynb` with interactive controls for both the run convergence and empirical scaling exponent plots. Both sections have filter controls for scenario, problem size, and algorithm, and the scaling exponent can be faceted per scenario to compare behaviour across input types.],
   ),
+  (
+    system: [GitHub Copilot 10],
+    prompt: [Help me create a python script that creates a figure to represent the Smith-Waterman algorithm's dynamic programming matrix and traceback path for a given pair of sequences.],
+    usage: [Created `Code/swfigure.py`, which generates a PDF/PNG figure of the Smith-Waterman dynamic programming matrix.],
+  ),
 )

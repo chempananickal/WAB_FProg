@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-import sys
 from pathlib import Path
 
 from setuptools import Extension, setup
@@ -20,8 +19,6 @@ def _extension_args() -> tuple[list[str], list[str]]:
         compile_args.append("/MT")
     else:
         link_args.append("-static-libgcc")
-        if sys.platform == "darwin":
-            link_args.clear()
 
     return compile_args, link_args
 
