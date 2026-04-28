@@ -28,7 +28,7 @@
   - RAM: 16 GB DDR4 2933 MT/s
   - Storage: 512 GB NVMe SSD
 
-  To reduce interference, the tests were run with no other applications active apart from the IDE, with the laptop connected to power, and with heavy background processes such as Windows Update disabled.
+  To reduce interference, the tests were run with no other applications active apart from the @ide:short (VS Code), with the laptop connected to power, and with heavy background processes such as Windows Update disabled.
 
   == Python Runtimes and Tools
 

@@ -47,4 +47,9 @@
     long: "Domain-Specific Language",
     group: abbreviation_group,
   ),
+  ide: (
+    short: "IDE",
+    long: "Integrated Development Environment",
+    group: abbreviation_group,
+  ),
 )
