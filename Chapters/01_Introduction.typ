@@ -36,7 +36,7 @@
 
   The latest stable version of PyPy as of writing supports upto Python 3.11 @pypy, and according to the PyPy team, it is on average 2.9 times faster than CPython 3.11 @pypy_performance.
 
-  === CPython @jit
+  === CPython JIT Compiler
 
   The CPython @jit is a @copy_and_patch @jit compiler that was added in Python 3.14 @python314. It speeds up frequently executed code by generating native machine code from prebuilt templates and patching these into the interpreter at runtime.
 
@@ -62,18 +62,14 @@
 
   The PyPy team regularly benchmarks their implementation against CPython across a variety of workloads, and they have their results available on a dedicated section of their website @pypy_performance. However, they compare PyPy version 3.11 (the latest version of PyPy as of writing) to CPython 3.11. The CPython @jit was only added in Python 3.14, and therefore could not be included in their comparisons.
 
+  And although there have been many independent benchmarks comparing Cython and/or PyPy to CPython @roghult2016benchmarking @py2cy, the technology is advancing quite rapidly, so their findings may not represent the current state of affairs.
+
+  Additionally, no benchmarks have compared all the aforementioned runtimes to the new CPython @jit, as the project is still in its infancy. One of the maintainers of the new @jit compiler's optimizer (Ken Jin) has a few benchmarks where the performance of the @jit is compared to the standard CPython interpreter. The @jit seems to perform, on average, on par or slightly worse than the standard interpreter in these benchmarks @jit_maintainer.
+
 
   == Research Question
 
   How does the @sw algorithm perform across the different Python runtimes, namely the default CPython interpreter, the newer CPython @jit, PyPy, and Cython?
-
-  == Hypotheses
-
-  - H0: There is no significant difference in the execution time of the @sw:long algorithm across CPython, CPython JIT, PyPy, and Cython.
-
-  - H1: There is a significant difference in the execution time of the @sw:long algorithm across CPython, CPython JIT, PyPy, and Cython.
-
-
 
 
 ]

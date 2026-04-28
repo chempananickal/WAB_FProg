@@ -178,3 +178,16 @@ title = {Pythran: enabling static optimization of scientific Python programs},
 journal = {Computational Science & Discovery},
 abstract = {Pythran is an open source static compiler that turns modules written in a subset of Python language into native ones. Assuming that scientific modules do not rely much on the dynamic features of the language, it trades them for powerful, possibly inter-procedural, optimizations. These optimizations include detection of pure functions, temporary allocation removal, constant folding, Numpy ufunc fusion and parallelization, explicit thread-level parallelism through OpenMP annotations, false variable polymorphism pruning, and automatic vector instruction generation such as AVX or SSE. In addition to these compilation steps, Pythran provides a C++ runtime library that leverages the C++ STL to provide generic containers, and the Numeric Template Toolbox for Numpy support. It takes advantage of modern C++11 features such as variadic templates, type inference, move semantics and perfect forwarding, as well as classical idioms such as expression templates. Unlike the Cython approach, Pythran input code remains compatible with the Python interpreter. Output code is generally as efficient as the annotated Cython equivalent, if not more, but without the backward compatibility loss.}
 }
+
+@misc{roghult2016benchmarking,
+  title={Benchmarking Python Interpreters: Measuring Performance of CPython, Cython, Jython and PyPy},
+  author={Roghult, Alexander},
+  year={2016}
+}
+
+@url{jit_maintainer,
+        author = {Jin, Ken},
+        title = {Reflections on 2 years of CPython’s JIT Compiler: The good, the bad, the ugly},
+        url = {https://fidget-spinner.github.io/posts/jit-reflections.html},
+        urlDate = {2026-04-28}
+}

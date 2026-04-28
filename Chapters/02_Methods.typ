@@ -1,9 +1,7 @@
 #let methods_content = [
-= Methods
+  = Methods
 
-Write your methods here.
+  == Design
 
-== Design
-
-== Data Collection
+  == Dataset
 ]
