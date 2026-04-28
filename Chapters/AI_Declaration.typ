@@ -68,4 +68,9 @@
     prompt: [Help me draft an equation explaining how the empirical scaling exponent, and write some explainer text for it.],
     usage: [Added an equation for the empirical scaling exponent derived from OLS fits in log-log space, along with explanatory text in the results chapter.],
   ),
+  (
+    system: [GitHub Copilot 14],
+    prompt: [Translate my abstract into German.],
+    usage: [Translated the English abstract into German, maintaining the original meaning and style.],
+  ),
 )

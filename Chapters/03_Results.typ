@@ -1,14 +1,16 @@
 #let results_content = [
   = Results
 
+  CSV files conaining the raw data from the benchmark runs, as well as summaries, can be found in the supplementary materials under `Code/Results/`. The following sections mostly contain visualizations derived from the aforementioned raw data.
+
   == Runtime by Scenario and Problem Size
 
-  @runtime_by_scenario_plot measures the median runtime (in milliseconds) for each runtime, grouped by scenario and plotted over the tested problem sizes. Each panel corresponds to one synthetic sequence scenario, and the vertical axis is shown on a logarithmic scale so that differences across the full size range remain visible in the same figure.
+  @runtime_boxplot measures the median runtime (in milliseconds) for each runtime, grouped by scenario and plotted over the tested problem sizes. Each panel corresponds to one synthetic sequence scenario, and the vertical axis is shown on a logarithmic scale so that differences across the full size range remain visible in the same figure.
 
   #figure(
     image("../Code/Results/plots/runtime_by_scenario.pdf", width: 80%),
     caption: [Median runtime by scenario and problem size for the four tested Python execution modes.],
-  ) <runtime_by_scenario_plot>
+  ) <runtime_boxplot>
 
   == Speedup Relative to CPython
 
