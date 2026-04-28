@@ -32,7 +32,7 @@
 
   == Python Runtimes and Tools
 
-  The test were performed on the following runtimes (@runtime_table):
+  The tests were performed on the following runtimes (@runtime_table):
 
   #figure(
     {
@@ -52,7 +52,7 @@
     caption: "The runtimes included in the benchmark and their specifications.",
   ) <runtime_table>
 
-  Additionally, the following Python packages were indispensible in the analysis and plotting of the results (@packages_table):
+  Additionally, the following Python packages were indispensable in the analysis and plotting of the results (@packages_table):
 
   #figure(
     {
@@ -112,6 +112,6 @@
     caption: [Description of the synthetic scenario families used in the @sw:long benchmark. $p$ denotes the problem size.],
   ) <scenario_table>
 
-  The sequences were generated using a custom script (available in the supplementary materials under `Code/helpers/case_generation.py`). To ensure reproducibility, the random seed was set to 42. The problem size $p$ was tested at 100, 200, 500, 800, 1000, 2000, 5000, 8000, and 10,000 characters. For each problem size and scenario, 10 sequence pairs were generated, and each sequence pair was tested on each runtime 12 times (2 warmup runs and 10 timed runs) to account for variablity at the system-level. The median was chosen as the summary statistic for the timed runs to account for outliers, and the correctness of the scores were validated by checking them against the CPython interpreter implementation.
+  The sequences were generated using a custom script (available in the supplementary materials under `Code/helpers/case_generation.py`). To ensure reproducibility, the random seed was set to 42. The problem size $p$ was tested at 100, 200, 500, 800, 1000, 2000, 5000, 8000, and 10,000 characters. For each problem size and scenario, 10 sequence pairs were generated, and each sequence pair was tested on each runtime 12 times (2 warmup runs and 10 timed runs) to account for variability at the system-level. The median was chosen as the summary statistic for the timed runs to account for outliers, and the correctness of the scores were validated by checking them against the CPython interpreter implementation.
 
 ]

@@ -3,7 +3,7 @@
 
   == Background
 
-  Python @python has emerged to be the most widely used programming language among many fields, including bioinformatics@pythonbioinf. It has many strengths, such as a very beginner friedly syntax, an exceptionally large ecosystem of packages, dynamic typing, and a feature rich standard library. One area where it is clearly lacking, however, is performance. This is due to the fact that the default implementation of Python, CPython, is interpreted and dynamically typed, which leads to significant overhead at runtime.
+  Python @python has emerged as the most widely used programming language among many fields, including bioinformatics@pythonbioinf. It has many strengths, such as a very beginner friendly syntax, an exceptionally large ecosystem of packages, dynamic typing, and a feature-rich standard library. One area where it is clearly lacking, however, is performance. This is due to the fact that the default implementation of Python, CPython, is interpreted and dynamically typed, which leads to significant overhead at runtime.
 
   #quote(
     "The Python interpreter does a lot of work to try to abstract away the underlying computing elements that are being used. At no point does a programmer need to worry about allocating memory for arrays, how to arrange that memory, or in what sequence it is being sent to the CPU. This is a benefit of Python, since it lets you focus on the algorithms that are being implemented. However, it comes at a huge performance cost.",
@@ -20,7 +20,7 @@
 
   === Cython
 
-  Cython is a python module that allows users to write Python code interspersed with optional type annotations (in the form of `#cdef <variable>: <type>`). The file is then saved as a `.pyx` file and transpiled into C code using its _cythonize_ toolchain. In the end, it creates a compiled module (a `.pyd` file on Windows, `.so` on Linux) using `setuptools` that can be imported and used from Python just like any regular module (see @cythonfigure). This naturally requires a compiler such as the @gcc or @msvc to be installed on the system @cython.
+  Cython is a Python module that allows users to write Python code interspersed with optional type annotations (in the form of `#cdef <variable>: <type>`). The file is then saved as a `.pyx` file and transpiled into C code using its _cythonize_ toolchain. In the end, it creates a compiled module (a `.pyd` file on Windows, `.so` on Linux) using `setuptools` that can be imported and used from Python just like any regular module (see @cythonfigure). This naturally requires a compiler such as the @gcc or @msvc to be installed on the system @cython.
 
   // Cython build pipeline as a figure:
   #figure(
@@ -34,7 +34,7 @@
 
   PyPy runs on RPython @rpython, a subset of Python that is used to implement the PyPy interpreter itself. When a Python program is run on PyPy, the interpreter starts executing the code using an interpreter loop, similar to CPython. However, as it runs, it collects profiling information about which parts of the code are executed frequently (called "hot loops"). When it identifies such hot loops, it compiles them into native machine code using the tracing @jit compiler, which can lead to significant performance improvements for long-running programs after a @warm_up_phase @pypy_interpreter.
 
-  The latest stable version of PyPy as of writing supports upto Python 3.11 @pypy, and according to the PyPy team, it is on average 2.9 times faster than CPython 3.11 @pypy_performance.
+  The latest stable version of PyPy as of writing supports up to Python 3.11 @pypy, and according to the PyPy team, it is on average 2.9 times faster than CPython 3.11 @pypy_performance.
 
   === CPython JIT Compiler
 

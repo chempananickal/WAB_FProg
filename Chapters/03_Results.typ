@@ -1,7 +1,7 @@
 #let results_content = [
   = Results
 
-  CSV files conaining the raw data from the benchmark runs, as well as summaries, can be found in the supplementary materials under `Code/Results/`. The following sections mostly contain visualizations derived from the aforementioned raw data.
+  CSV files containing the raw data from the benchmark runs, as well as summaries, can be found in the supplementary materials under `Code/Results/`. The following sections mostly contain visualizations derived from the aforementioned raw data.
 
   == Runtime by Scenario and Problem Size
 

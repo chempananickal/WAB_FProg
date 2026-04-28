@@ -73,4 +73,9 @@
     prompt: [Translate my abstract into German.],
     usage: [Translated the English abstract into German, maintaining the original meaning and style.],
   ),
+  (
+    system: [GitHub Copilot 15],
+    prompt: [Do one last pass over my entire document. See if any egregious spelling or grammatical errors stick out to you.],
+    usage: [Reviewed the thesis text for conspicuous spelling and grammatical issues, reported the main problems, and assisted with a small number of minor language corrections without changing the document's substance.],
+  ),
 )
