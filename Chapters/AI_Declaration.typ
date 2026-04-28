@@ -63,4 +63,9 @@
     prompt: [I screwed up my table formatting in the methods chapter, can you help me fix it?],
     usage: [Fixed the table formatting in the methods chapter by wrapping the table header and rows in a single `table()` call.],
   ),
+  (
+    system: [GitHub Copilot 13],
+    prompt: [Help me draft an equation explaining how the empirical scaling exponent, and write some explainer text for it.],
+    usage: [Added an equation for the empirical scaling exponent derived from OLS fits in log-log space, along with explanatory text in the results chapter.],
+  ),
 )
