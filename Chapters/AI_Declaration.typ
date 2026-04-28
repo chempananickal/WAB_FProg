@@ -58,4 +58,9 @@
     prompt: [Write a piece of Python code that can generate a figure that shows the steps in the Cython transpilation workflow. Call it cythonfigure.py and save the figure (PNG and PDF) to Code/Graphics.],
     usage: [[After a few iterations\...] Created `Code/cythonfigure.py`, which generates a PDF/PNG figure of the Cython build pipeline from the `.pyx` source file to the compiled extension module.],
   ),
+  (
+    system: [GitHub Copilot 12],
+    prompt: [I screwed up my table formatting in the methods chapter, can you help me fix it?],
+    usage: [Fixed the table formatting in the methods chapter by wrapping the table header and rows in a single `table()` call.],
+  ),
 )

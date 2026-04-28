@@ -66,6 +66,8 @@
 
   Additionally, no benchmarks have compared all the aforementioned runtimes to the new CPython @jit, as the project is still in its infancy. One of the maintainers of the new @jit compiler's optimizer (Ken Jin) has a few benchmarks where the performance of the @jit is compared to the standard CPython interpreter. The @jit seems to perform, on average, on par or slightly worse than the standard interpreter in these benchmarks @jit_maintainer.
 
+  The @sw:long algorithm specifically, does not seem to have been benchmarked across all these runtimes anywhere in the available literature.
+
 
   == Research Question
 
