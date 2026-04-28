@@ -69,7 +69,7 @@
         [JupyterLab], [4.5.5], [Notebook environment for interactive analysis],
       )
     },
-    caption: "The Python packages used in the analysis and plotting of the results.",
+    caption: "The additional (non-stdlib) Python packages used in the project. Only the primary packages are listed, not their dependencies.",
   ) <packages_table>
 
   == Dataset

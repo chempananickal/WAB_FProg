@@ -24,7 +24,7 @@
 
   // Cython build pipeline as a figure:
   #figure(
-    image("../Code/Graphics/cython_transpilation_workflow.pdf", width: 75%),
+    image("../Code/Graphics/cython_transpilation_workflow.pdf", width: 80%),
     caption: "The Cython build pipeline, from a .pyx file to a compiled extension module.",
   ) <cythonfigure>
 

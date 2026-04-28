@@ -12,6 +12,15 @@ import matplotlib.ticker as ticker
 import numpy as np
 import pandas as pd
 
+plt.rcParams.update(
+    {
+        "axes.titlesize": 14,
+        "axes.titleweight": "normal",
+        "figure.titlesize": 18,
+        "figure.titleweight": "bold",
+    }
+)
+
 ALGORITHM_ORDER = ["CPython", "CPython JIT", "PyPy", "Cython"]
 ALGORITHM_COLORS = {
     "CPython": "#1f3a5f",
@@ -53,7 +62,6 @@ def generate_plots(output_dir: Path) -> list[Path]:
         ),
         _plot_runtime_boxplot(raw_df, output_path=plots_dir / "runtime_boxplot.pdf"),
         _plot_throughput(raw_df, output_path=plots_dir / "throughput_by_size.pdf"),
-        _plot_scaling_exponent(raw_df, output_path=plots_dir / "scaling_exponent.pdf"),
     ]
 
     per_run_path = output_dir / "per_run_times.csv"
@@ -196,7 +204,7 @@ def _plot_run_convergence(per_run_df: pd.DataFrame, *, output_path: Path) -> Pat
             axis.axvline(warmup_count - 0.5, color="#888888", linestyle=":", linewidth=1)
 
         axis.axhline(1.0, color="#555555", linestyle="--", linewidth=1)
-        axis.set_title(f"n = {size:,}")
+        axis.set_title(f"p = {size:,}")
         axis.set_xlabel("Run index")
         axis.set_ylabel("Relative runtime [×]")
         axis.set_xticks(range(total_runs))
@@ -235,7 +243,7 @@ def _plot_runtime_boxplot(raw_df: pd.DataFrame, *, output_path: Path) -> Path:
             patch.set_facecolor(ALGORITHM_COLORS[alg])
             patch.set_alpha(0.85)
 
-        axis.set_title(f"n = {size:,}")
+        axis.set_title(f"p = {size:,}")
         axis.set_ylabel("Median runtime [ms]")
         axis.set_yscale("log")
         axis.yaxis.set_major_locator(ticker.LogLocator(base=10, subs=[1, 2, 5], numticks=10))
@@ -292,62 +300,6 @@ def _plot_throughput(raw_df: pd.DataFrame, *, output_path: Path) -> Path:
     fig.suptitle("Computational Throughput by Scenario and Problem Size\n(cells = len_a × len_b; higher is faster)")
     _place_legend(axes, len(scenarios), handles, labels)
     fig.tight_layout(rect=(0, 0, 1, 0.95))
-    fig.savefig(output_path, format="pdf", bbox_inches="tight")
-    plt.close(fig)
-    return output_path
-
-
-def _plot_scaling_exponent(raw_df: pd.DataFrame, *, output_path: Path) -> Path:
-    """Fit t ~ n^alpha per algorithm via OLS in log-log space; plot alpha with 95% CI."""
-    # Use the product of sequence lengths as the cell count (actual work ~ len_a * len_b)
-    df = raw_df.copy()
-    df["log_n"] = np.log10(np.sqrt(df["sequence_a_length"] * df["sequence_b_length"]))
-    df["log_t"] = np.log10(df["median_time_ms"].clip(lower=1e-9))
-
-    fig, axis = plt.subplots(figsize=(8, 5))
-
-    bar_width = 0.18
-    x_positions = np.arange(len(ALGORITHM_ORDER))
-
-    for bar_x, algorithm in zip(x_positions, ALGORITHM_ORDER):
-        alg_df = df[df["algorithm"] == algorithm].dropna(subset=["log_n", "log_t"])
-        if len(alg_df) < 3:
-            continue
-        log_n = alg_df["log_n"].values
-        log_t = alg_df["log_t"].values
-
-        # OLS: log_t = alpha * log_n + const
-        A = np.column_stack([log_n, np.ones(len(log_n))])
-        result = np.linalg.lstsq(A, log_t, rcond=None)
-        coeffs = result[0]
-        alpha = coeffs[0]
-
-        # 95% confidence interval via residual variance
-        residuals = log_t - A @ coeffs
-        n_obs = len(log_n)
-        if n_obs > 2:
-            s2 = np.sum(residuals**2) / (n_obs - 2)
-            ATA_inv = np.linalg.inv(A.T @ A)
-            se_alpha = np.sqrt(s2 * ATA_inv[0, 0])
-            ci = 1.96 * se_alpha
-        else:
-            ci = 0.0
-
-        axis.bar(bar_x, alpha, width=bar_width, color=ALGORITHM_COLORS[algorithm],
-                 label=algorithm, alpha=0.85)
-        axis.errorbar(bar_x, alpha, yerr=ci, fmt="none", color="black", capsize=5, linewidth=1.5)
-
-    # Reference line at alpha=2 (theoretical O(n^2))
-    axis.axhline(2.0, color="#555555", linestyle="--", linewidth=1.2, label="Theoretical $O(n^2)$")
-
-    axis.set_xticks(x_positions)
-    axis.set_xticklabels(ALGORITHM_ORDER)
-    axis.set_ylabel("Scaling exponent $\\alpha$  ($t \\propto n^\\alpha$)")
-    axis.set_title("Empirical Scaling Exponent per Algorithm\n(OLS fit in log–log space, 95% CI error bars)")
-    axis.legend(frameon=False)
-    axis.grid(True, alpha=0.3, axis="y")
-
-    fig.tight_layout()
     fig.savefig(output_path, format="pdf", bbox_inches="tight")
     plt.close(fig)
     return output_path

@@ -7,6 +7,9 @@
 #import "Chapters/Abstract.typ": abstract_content
 #import "Chapters/01_Introduction.typ": introduction_content
 #import "Chapters/02_Methods.typ": methods_content
+#import "Chapters/03_Results.typ": results_content
+#import "Chapters/04_Discussion.typ": discussion_content
+#import "Chapters/05_Conclusion.typ": conclusion_content
 #import "Chapters/AI_Declaration.typ": ai_declaration_entries, ai_declaration_intro
 
 #show: init-glossary.with(all_glossary_entries)
@@ -52,6 +55,12 @@
 #numbered_section(introduction_content)
 
 #numbered_section(methods_content)
+
+#numbered_section(results_content)
+
+#numbered_section(discussion_content)
+
+#numbered_section(conclusion_content)
 
 #pagebreak()
 #set page(numbering: "i")
